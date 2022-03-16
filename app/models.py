@@ -32,5 +32,13 @@ class Product(models.Model):
     
     def __str__(self):
             return self.name
-         
+    
+class Banner(models.Model):
+     heading=models.CharField(max_length=200)
+     sub_heading=models.CharField(max_length=200)
+     short_description=models.TextField()
+     image=models.ImageField(upload_to='static/bannerImg')
+     def __str__(self):
+            return self.heading 
+             
     

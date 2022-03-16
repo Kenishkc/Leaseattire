@@ -1,9 +1,10 @@
 from django.shortcuts import render
-from app.models import  Category,Brand,Product
+from app.models import  Category,Brand,Product,Banner
 
 # Create your views here.
 def master(request):
     brands=Brand.objects.all()
+    banner=Banner.objects.all()
     category= Category.objects.all()
   
     
@@ -23,6 +24,7 @@ def master(request):
         'category':category,
         'brand':brands,
         'product':product,
+        'banner':banner
     }
     return render(request, 'index.html',context)
 
