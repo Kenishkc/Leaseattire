@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from app.models import  Category,Brand,Product,Banner
+from app.models import  Category,Brand,Product,Banner,Sub_Category
 
 # Create your views here.
 def master(request):
@@ -18,18 +18,31 @@ def master(request):
     if brandId:
          product =Product.objects.filter(brand=brandId)
         
+    subcategory=Sub_Category.objects.filter(category='1')
+    
+    subcategoryId=request.GET.get('sub_cat')
+    if subcategoryId:
+         product =Product.objects.filter(sub_category==subcategoryId)
     
         
     context={
         'category':category,
         'brand':brands,
         'product':product,
-        'banner':banner
+        'banner':banner,
+        'subcategory':subcategory
     }
     return render(request, 'index.html',context)
 
-def productDetails(request):
-    return render(request, 'productDetails.html')
+def productDetails(request, id):
+    product =Product.objects.filter(id=id).first()
+    context={
+        
+        'product':product,
+      
+    }
+    
+    return render(request, 'productDetails.html',context)
 
 def shop(request):
     return render(request, 'shop.html')
