@@ -191,7 +191,7 @@
 
           <div class="shipping text-center">
             <!--shipping-->
-            <img src="images/home/shipping.jpg" alt="" />
+            <img src="{%static 'images/home/shipping.jpg'%}" alt="" />
           </div>
           <!--/shipping-->
         </div>
@@ -252,8 +252,7 @@
               <a
                 class="left item-control"
                 href="#similar-product"
-                data-slide="prev"
-              >
+                data-slide="prev">
                 <i class="fa fa-angle-left"></i>
               </a>
               <a
@@ -269,31 +268,38 @@
             <div class="product-information">
               <!--/product-information-->
               <img
-                src="images/product-details/new.jpg"
+                src="{%static 'images/product-details/new.jpg'%}"
                 class="newarrival"
                 alt=""
               />
               <h2>{{product.name}}</h2>
-              <p>Web ID: 1089772</p>
-              <img src="images/product-details/rating.png" alt="" />
+              <p>Brand: {{product.brand}}</p>
+              <img src="{%static 'images/product-details/rating.png'%}" alt="" /></br>
               <span>
-                <span>US $59</span>
-                <label>Quantity:</label>
-                <input type="text" value="3" />
+                <span>{{product.rentalprice}}</span>
+                <label>For</label>
+                <input type="text" value="3"  />
+                <label>Days</label>
+               
+              </span>
+              <p><b>Actual Price:</b> NRP{{product.price}}</p>
+              <p><b>Availability:</b> In Stock</p>
+              <p><b>Condition:</b> New</p>
+              <p><b>Category:</b> {{product.category}} > {{product.sub_category}}</p>
+
+               
+              <a href=""
+                ><img
+                  src="{%static 'images/product-details/share.png'%}"
+                  class="share img-responsive"
+                  alt=""
+              /></a><br>
                 <button type="button" class="btn btn-fefault cart">
                   <i class="fa fa-shopping-cart"></i>
                   Add to cart
                 </button>
-              </span>
-              <p><b>Availability:</b> In Stock</p>
-              <p><b>Condition:</b> New</p>
-              <p><b>Brand:</b> E-SHOPPER</p>
-              <a href=""
-                ><img
-                  src="images/product-details/share.png"
-                  class="share img-responsive"
-                  alt=""
-              /></a>
+
+
             </div>
             <!--/product-information-->
           </div>

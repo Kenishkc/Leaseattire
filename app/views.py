@@ -20,17 +20,18 @@ def master(request):
         
     subcategory=Sub_Category.objects.filter(category='1')
     
-    subcategoryId=request.GET.get('sub_cat')
-    if subcategoryId:
-         product =Product.objects.filter(sub_category==subcategoryId)
+    sub_product =Product.objects.filter(category='1')
     
+        
         
     context={
         'category':category,
         'brand':brands,
         'product':product,
         'banner':banner,
-        'subcategory':subcategory
+        'subcategory':subcategory,
+        'subproduct':sub_product,
+        
     }
     return render(request, 'index.html',context)
 
@@ -45,7 +46,34 @@ def productDetails(request, id):
     return render(request, 'productDetails.html',context)
 
 def shop(request):
-    return render(request, 'shop.html')
+    brands=Brand.objects.all()
+    banner=Banner.objects.all()
+    category= Category.objects.all()
+  
+    
+    categoryID=request.GET.get('category')
+    if categoryID:
+       product =Product.objects.filter(sub_category=categoryID)       
+    else:
+         product=Product.objects.all()
+    
+    brandId=request.GET.get('brand')
+    if brandId:
+         product =Product.objects.filter(brand=brandId)
+        
+    
+        
+        
+    context={
+        'category':category,
+        'brand':brands,
+        'product':product,
+        'banner':banner,
+       }
+    
+    
+    
+    return render(request, 'shop.html',context)
 
 def checkout(request):
     return render(request, 'checkout.html')
