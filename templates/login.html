@@ -8,13 +8,14 @@
 				<div class="col-sm-4 col-sm-offset-1">
 					<div class="login-form"><!--login form-->
 						<h2>Login to your account</h2>
-						<form action="#">
-							<input type="text" placeholder="Name" />
-							<input type="email" placeholder="Email Address" />
+						<form action="" method="POST" >
+							{% csrf_token %}
+							<input type="text" name="user" placeholder="Enter UserName" />
+							<input type="password" name="password" placeholder="Enter Password" />
 							<span>
 								<input type="checkbox" class="checkbox"> 
 								Remember Me ?  
-                 <a href="user-register">Register</a>
+                			 <a href="user-register">Register</a>
 							</span>
               
              

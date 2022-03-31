@@ -133,7 +133,16 @@
               <div class="shop-menu pull-right">
                 <ul class="nav navbar-nav">
                   <li>
-                    <a href="#" data-toggle="dropdown" ><i class="fa fa-user"></i> Account</a>
+                   
+
+                    <a href="#" data-toggle="dropdown" ><i class="fa fa-user"></i>
+                     {% if user.is_authenticated %}
+                        Welcome, {{ user.get_username }}
+                    {% else %}
+                        Account
+                    {% endif %}
+                      
+                      </a>
                   <ul class="dropdown-menu">
                     <li><a href="#">Canadian Dollar</a></li>
                     <li><a href="#">Pound</a></li>

@@ -1,5 +1,13 @@
-from django.shortcuts import render
+
+from django.shortcuts import render ,redirect
 from app.models import  Category,Brand,Product,Banner,Sub_Category
+from django.contrib.auth.forms import UserCreationForm
+from .forms import CreateUserForm
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import login as auth_login
+
+
+
 
 # Create your views here.
 def master(request):
@@ -79,10 +87,35 @@ def checkout(request):
     return render(request, 'checkout.html')
 
 def login(request):
+       
+    if request.method == "POST" :
+   
+       username = request.POST.get('user')
+       password = request.POST.get('password')
+       user = authenticate (username=username, password=password)   
+       if user is not None:
+            auth_login(request, user)
+            return redirect('/')
+       elif user is None:
+                return render(request, "login.html", {
+                        "message": "Invalid username and/or password."
+                })     
+       
     return render(request, 'login.html')
 
 def register(request):
-    return render(request, 'register.html')
+    form = CreateUserForm()
+    
+    if request.method=='POST':
+        form = CreateUserForm(request.POST)
+        if form.is_valid():
+            form.save() 
+        
+        
+    context={
+        'form':form,
+    }
+    return render(request, 'register.html',context)
 
 def account(request):
     return render(request, 'account.html')
