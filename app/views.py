@@ -5,6 +5,8 @@ from django.contrib.auth.forms import UserCreationForm
 from .forms import CreateUserForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth import login as auth_login
+from django.contrib import messages 
+
 
 
 
@@ -95,11 +97,10 @@ def login(request):
        user = authenticate (username=username, password=password)   
        if user is not None:
             auth_login(request, user)
+            messages.success(request, "Login successfully!")
             return redirect('/')
        elif user is None:
-                return render(request, "login.html", {
-                        "message": "Invalid username and/or password."
-                })     
+                messages.error(request, "Please Enter valid username or password!")    
        
     return render(request, 'login.html')
 
@@ -117,6 +118,11 @@ def register(request):
     }
     return render(request, 'register.html',context)
 
+def logoutUser(request):
+     logout(request)
+     messages.success(request, "Your logout, Get back Soon !")
+     return redirect("/")
+  
 def account(request):
     return render(request, 'account.html')
 
