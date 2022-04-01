@@ -102,7 +102,9 @@
                 <a href="/"><img src="static/images/home/logo.png" alt="" /></a>
               </div>
               <div class="btn-group pull-right">
-                <div class="btn-group">
+
+                
+                {% comment %} <div class="btn-group">
                   <button type="button"class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
                     USA
                     <span class="caret"></span>
@@ -125,28 +127,40 @@
                   <ul class="dropdown-menu">
                     <li><a href="#">Canadian Dollar</a></li>
                     <li><a href="#">Pound</a></li>
+                    <li><a href="#">Euro</a></li>
                   </ul>
-                </div>
+                </div> {% endcomment %}
+
               </div>
             </div>
             <div class="col-sm-8">
+              
               <div class="shop-menu pull-right">
                 <ul class="nav navbar-nav">
+                  
                   <li>
                    
 
-                    <a href="#" data-toggle="dropdown" ><i class="fa fa-user"></i>
-                     {% if user.is_authenticated %}
-                        Welcome, {{ user.get_username }}
-                    {% else %}
-                        Account
-                    {% endif %}
-                      
+                    <a href="#" data-toggle="dropdown" >
+                      <i class="fa fa-user"></i>
+                        {% if user.is_authenticated %}
+                            Welcome, {{ user.get_username }}
+                          
+                        {% else %}
+                            Account
+                        {% endif %}
+                       <span class="caret"></span>
                       </a>
-                  <ul class="dropdown-menu">
-                    <li><a href="#">Canadian Dollar</a></li>
-                    <li><a href="#">Pound</a></li>
-                  </ul>
+                      <ul class="dropdown-menu">
+                        {% if user.is_authenticated %}
+                        <li><a href="#">Profile</a></li>
+                        <li><a href="#">Setting</a></li>
+                        <li><a href="/user-logout">Logout</a></li>
+                        {% else %}
+                        <li><a href="/user-register">Register</a></li>
+                        <li><a href="/user-login">Login</a></li>
+                        {% endif %}
+                      </ul>
                   </li>
                   <li>
                     <a href="#"><i class="fa fa-star"></i> Wishlist</a>
@@ -161,9 +175,7 @@
                       ><i class="fa fa-shopping-cart"></i> Cart</a
                     >
                   </li>
-                  <li>
-                    <a href="/user-login"><i class="fa fa-lock"></i> Login</a>
-                  </li>
+                  
                 </ul>
               </div>
             </div>
@@ -204,7 +216,7 @@
                     <ul role="menu" class="sub-menu">
                        <li><a href="/cart">Profile</a></li>
                       <li><a href="/user-login">Login</a></li>
-                      <li><a href="/user-login">Register</a></li>
+                      <li><a href="/user-register">Register</a></li>
                     </ul>
                   </li>
                 
@@ -223,7 +235,27 @@
       <!--/header-bottom-->
     </header>
     <!--/header-->
+      {% for message in messages %}
+          {% if message.tags == 'success' %}
+          <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+          <script>
+            var m = "{{message}}";
+            swal("Perfect !",m,"success")
 
+          </script>
+
+          {% endif %}
+          {% if message.tags == 'error' %}
+          <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+          <script>
+            var m = "{{message}}";
+            swal("Sorry !",m,"error")
+
+          </script>
+
+          {% endif %}
+
+      {% endfor %}
     {% block body %}{% endblock body %}
     <footer id="footer">
       <!--Footer-->
