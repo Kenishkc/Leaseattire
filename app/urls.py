@@ -15,4 +15,5 @@ urlpatterns = [
     path('contact', views.contact),
     path('blogs', views.blogs),
     path('blog-single', views.singleblog),
+    path('user-profile',views.profile),
 ]
