@@ -142,3 +142,7 @@ def blogs(request):
 
 def singleblog(request):
     return render(request, 'blog-single.html')
+
+
+def profile(request):
+    return render(request, 'user/profile.html')
