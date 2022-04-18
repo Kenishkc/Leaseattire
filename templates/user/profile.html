@@ -220,6 +220,10 @@ mark {
                             <div class="row about-list">
                                 <div class="col-md-6">
                                     <div class="media">
+                                        <label>Full Name</label>
+                                        <p>{{profile.fullname}}</p>
+                                    </div>
+                                    <div class="media">
                                         <label>Birthday</label>
                                         <p>4th april 1998</p>
                                     </div>
@@ -239,11 +243,11 @@ mark {
                                 <div class="col-md-6">
                                     <div class="media">
                                         <label>E-mail</label>
-                                        <p>info@domain.com</p>
+                                        <p>{{profile.user.email}}</p>
                                     </div>
                                     <div class="media">
                                         <label>Phone</label>
-                                        <p>820-885-3321</p>
+                                        <p>{{profile.phone_number}}</p>
                                     </div>
                                     <div class="media">
                                         <label>Skype</label>
@@ -294,9 +298,7 @@ mark {
         </div>
     </div>
 </div>
-
-
-            </div>
-        </section>
+ </div>
+</section>
 
 {%endblock body%}
