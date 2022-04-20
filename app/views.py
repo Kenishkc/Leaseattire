@@ -1,11 +1,13 @@
 
 from django.shortcuts import render ,redirect
-from app.models import  Category,Brand,Product,Banner,Sub_Category
+from app.models import  Category,Brand,Product,Banner,Sub_Category,Profile
 from django.contrib.auth.forms import UserCreationForm
 from .forms import CreateUserForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth import login as auth_login
 from django.contrib import messages 
+from django.contrib.auth.models import User
+
 
 
 
@@ -144,5 +146,39 @@ def singleblog(request):
     return render(request, 'blog-single.html')
 
 
-def profile(request):
-    return render(request, 'user/profile.html')
+def profile(request,id):
+    user =User.objects.filter(id=id).first()
+    profile =Profile.objects.filter(user=user).first()
+    if profile :  
+      context={
+        'profile':profile,
+        }
+      return render(request, 'user/profile.html',context)
+    else:
+     return render(request, 'user/add.html')
+ 
+def storeUserProfile(request):
+    user =User.objects.filter(id=request.user.id).first()
+    if request.method=='POST':
+         first = request.POST.get('fullname')
+         nick = request.POST.get('nickname')
+         mobile_one = request.POST.get('mobile_one')
+         mobile_two = request.POST.get('mobile_two')
+         district = request.POST.get('district')
+         city = request.POST.get('city')
+         local_area = request.POST.get('local_area')
+         street_address = request.POST.get('street_address')
+         house_number = request.POST.get('house_number')
+         birthday = request.POST.get('birthday')
+         gender = request.POST.get('gender')
+         image = request.POST.get('image')
+    data=Profile(user=user,fullname=first,nickname=nick,phone_number=mobile_one,second_number=mobile_two,
+                 disctrict=district,city=city,local_area=local_area,
+                 house_number=house_number,birthday=birthday,gender=gender,profile_picture=image)
+    data.save()
+    messages.success(request, "Your Profile has Sucessfully saved!")
+    return redirect("/")
+ 
+
+    
+        
