@@ -48,10 +48,14 @@ def master(request):
     return render(request, 'index.html',context)
 
 def productDetails(request, id):
+    brands=Brand.objects.all()
+    category= Category.objects.all()
     product =Product.objects.filter(id=id).first()
+    
     context={
-        
+        'brand':brands,
         'product':product,
+        'category':category,
       
     }
     

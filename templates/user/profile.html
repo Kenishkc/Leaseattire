@@ -211,7 +211,13 @@ mark {
                 <div class="row align-items-center flex-row-reverse">
                       <div class="col-lg-6">
                         <div class="about-avatar">
+                            {% if profile.profile_picture %}
+                            
+                            <img src="{{profile.profile_picture}}" title="" alt="">
+                            {% else %}
                             <img src="https://bootdey.com/img/Content/avatar/avatar7.png" title="" alt="">
+                            {% endif %}
+                           
                         </div>
                     </div>
                     <div class="col-lg-6">
@@ -225,19 +231,24 @@ mark {
                                     </div>
                                     <div class="media">
                                         <label>Birthday</label>
-                                        <p>4th april 1998</p>
+                                        <p>{{profile.birthday}}</p>
                                     </div>
                                     <div class="media">
                                         <label>Age</label>
-                                        <p>22 Yr</p>
+                                        <p>{{profile.age}}</p>
                                     </div>
                                     <div class="media">
                                         <label>Residence</label>
-                                        <p>Canada</p>
+                                        <p>Nepal</p>
                                     </div>
                                     <div class="media">
                                         <label>Address</label>
-                                        <p>California, USA</p>
+                                        <p>{{profile.disctrict}},
+                                            {{profile.city}},
+                                            {{profile.local_area}},
+                                            {{profile.house_number}}
+                                        </p>
+                                        
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -249,14 +260,8 @@ mark {
                                         <label>Phone</label>
                                         <p>{{profile.phone_number}}</p>
                                     </div>
-                                    <div class="media">
-                                        <label>Skype</label>
-                                        <p>skype.0404</p>
-                                    </div>
-                                    <div class="media">
-                                        <label>Freelance</label>
-                                        <p>Available</p>
-                                    </div>
+                                   
+                                   
                                 </div>
                             </div>
                         </div>
