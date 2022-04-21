@@ -154,7 +154,7 @@
                       <ul class="dropdown-menu">
                         {% if user.is_authenticated %}
                         <li><a href="/user-profile/{{user.id}}">Profile</a></li>
-                        <li><a href="#">Setting</a></li>
+                        <li><a href="/edit-profile/{{user.id}}">Setting</a></li>
                         <li><a href="/user-logout">Logout</a></li>
                         {% else %}
                         <li><a href="/user-register">Register</a></li>
@@ -172,8 +172,8 @@
                   </li>
                   <li>
                     <a href="/cart"
-                      ><i class="fa fa-shopping-cart"></i> Cart</a
-                    >
+                      ><i class="fa fa-shopping-cart"></i> Cart  <span class="badge">{{request.session.cart|length}}</span>
+                     </a>
                   </li>
                   
                 </ul>
