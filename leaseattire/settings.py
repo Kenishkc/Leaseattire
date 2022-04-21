@@ -66,9 +66,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     
     'app.apps.AppConfig',
+    
+    'cart',
 
 ]
-
+CART_SESSION_ID = 'cart'
 
 MIDDLEWARE = [
 
@@ -113,6 +115,8 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
 
                 'django.contrib.messages.context_processors.messages',
+                
+                'cart.context_processor.cart_total_amount'
 
             ],
 

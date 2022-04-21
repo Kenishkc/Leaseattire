@@ -1,0 +1,304 @@
+{% extends 'master.html' %} 
+{% block title %}User Profile{% endblock %}
+{% block css %}
+ <style>
+ 
+body{
+    color: #6F8BA4;
+    
+}
+.section {
+    padding: 100px 0;
+    position: relative;
+}
+.gray-bg {
+    background-color: #f5f5f5;
+}
+img {
+    max-width: 100%;
+}
+img {
+    vertical-align: middle;
+    border-style: none;
+}
+/* About Me 
+---------------------*/
+.about-text h3 {
+  font-size: 45px;
+  font-weight: 700;
+  margin: 0 0 6px;
+}
+@media (max-width: 767px) {
+  .about-text h3 {
+    font-size: 35px;
+  }
+}
+.about-text h6 {
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+@media (max-width: 767px) {
+  .about-text h6 {
+    font-size: 18px;
+  }
+}
+.about-text p {
+  font-size: 18px;
+  max-width: 450px;
+}
+.about-text p mark {
+  font-weight: 600;
+  color: #20247b;
+}
+
+.about-list {
+  padding-top: 10px;
+}
+.about-list .media {
+  padding: 5px 0;
+}
+.about-list label {
+  color: #20247b;
+  font-weight: 600;
+  width: 88px;
+  margin: 0;
+  position: relative;
+}
+.about-list label:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 11px;
+  width: 1px;
+  height: 12px;
+  background: #20247b;
+  -moz-transform: rotate(15deg);
+  -o-transform: rotate(15deg);
+  -ms-transform: rotate(15deg);
+  -webkit-transform: rotate(15deg);
+  transform: rotate(15deg);
+  margin: auto;
+  opacity: 0.5;
+}
+.about-list p {
+  margin: 0;
+  font-size: 15px;
+}
+
+@media (max-width: 991px) {
+  .about-avatar {
+    margin-top: 30px;
+  }
+}
+
+.about-section .counter {
+  padding: 22px 20px;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 0 30px rgba(31, 45, 61, 0.125);
+}
+.about-section .counter .count-data {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.about-section .counter .count {
+  font-weight: 700;
+  color: #20247b;
+  margin: 0 0 5px;
+}
+.about-section .counter p {
+  font-weight: 600;
+  margin: 0;
+}
+mark {
+    background-image: linear-gradient(rgba(252, 83, 86, 0.6), rgba(252, 83, 86, 0.6));
+    background-size: 100% 3px;
+    background-repeat: no-repeat;
+    background-position: 0 bottom;
+    background-color: transparent;
+    padding: 0;
+    color: currentColor;
+}
+.theme-color {
+    color: #fc5356;
+}
+.dark-color {
+    color: #20247b;
+}
+.tab .nav-tabs{
+    border:none;
+    padding: 0 0 1px;
+}
+.tab .nav-tabs li a{
+    padding:15px 30px;
+    background:#fff;
+    color:#808080;
+    text-transform:uppercase;
+    position: relative;
+    border:1px solid transparent;
+    z-index: 1;
+    transition: all 0.3s ease 0s;
+}
+.nav-tabs li a:hover{
+    color:#fff;
+}
+.tab .nav-tabs li a:before{
+    content: "";
+    width: 100%;
+    height: 100%;
+    border-radius: 4px 4px 0 0;
+    position: absolute;
+    top:0;
+    left:0;
+    opacity: 0;
+    z-index: -1;
+    transform: scale(0,0);
+    transition:all 0.5s ease 0s;
+}
+.tab .nav-tabs li a:hover:before{
+    background: #fdb45e;
+    opacity: 1;
+    transform: scale(1,1);
+}
+.tab .nav-tabs li a i{
+    display: block;
+    font-size: 15px;
+    text-align:center;
+    margin-bottom:5px;
+}
+.nav-tabs li.active a,
+.nav-tabs li.active a:focus,
+.nav-tabs li.active a:hover{
+    color:#fff;
+    background: #383634;
+    border-bottom:1px solid #fff;
+}
+.nav-tabs li.active a:hover:before{
+    background: none;
+}
+.tab .tab-content{
+    padding:30px 20px;
+    background: #727878;
+}
+.tab .tab-content h3{
+    margin:0 0 10px 0;
+    color:#fff;
+    font-weight: bold;
+    text-transform:uppercase;
+}
+.tab .tab-content p{
+    text-transform:capitalize;
+    color:#fff;
+    font-size: 17px;
+}
+@media only screen and (max-width: 600px){
+    .tab .nav-tabs li{
+        width:100%;
+        margin-bottom:0;
+        text-align:center;
+    }
+}
+
+    
+ </style>
+
+{% endblock css %}
+{% load static %}
+{% block body%}
+<section class="section about-section gray-bg" id="about">
+            <div class="container">
+                <div class="row align-items-center flex-row-reverse">
+                      <div class="col-lg-6">
+                        <div class="about-avatar">
+                            <img src="https://bootdey.com/img/Content/avatar/avatar7.png" title="" alt="">
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="about-text go-to">
+                            <h3 class="dark-color">About Me</h3>
+                            <div class="row about-list">
+                                <div class="col-md-6">
+                                    <div class="media">
+                                        <label>Full Name</label>
+                                        <p>{{profile.fullname}}</p>
+                                    </div>
+                                    <div class="media">
+                                        <label>Birthday</label>
+                                        <p>4th april 1998</p>
+                                    </div>
+                                    <div class="media">
+                                        <label>Age</label>
+                                        <p>22 Yr</p>
+                                    </div>
+                                    <div class="media">
+                                        <label>Residence</label>
+                                        <p>Canada</p>
+                                    </div>
+                                    <div class="media">
+                                        <label>Address</label>
+                                        <p>California, USA</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="media">
+                                        <label>E-mail</label>
+                                        <p>{{profile.user.email}}</p>
+                                    </div>
+                                    <div class="media">
+                                        <label>Phone</label>
+                                        <p>{{profile.phone_number}}</p>
+                                    </div>
+                                    <div class="media">
+                                        <label>Skype</label>
+                                        <p>skype.0404</p>
+                                    </div>
+                                    <div class="media">
+                                        <label>Freelance</label>
+                                        <p>Available</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                  
+                </div>
+            </br>
+      <div class="container">
+        <div class="row">
+        <div class="col-md-12">
+            <div class="tab" role="tabpanel">
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active"><a href="#Section1" aria-controls="home" role="tab" data-toggle="tab"><i class="fa fa-user"></i>Basic Info </a></li>
+                    <li role="presentation"><a href="#Section2" aria-controls="profile" role="tab" data-toggle="tab"><i class="fa fa-envelope"></i>Messages</a></li>
+                    <li role="presentation"><a href="#Section3" aria-controls="messages" role="tab" data-toggle="tab"><i class="fa fa-shopping-cart"></i>Purchase</a></li>
+                    <li role="presentation"><a href="#Section4" aria-controls="messages" role="tab" data-toggle="tab"><i class="fa fa-comment"></i>Section 4</a></li>
+                </ul>
+                <!-- Tab panes -->
+                <div class="tab-content tabs">
+                    <div role="tabpanel" class="tab-pane fade in active" id="Section1">
+                        <h3>Section-1</h3>
+                        <p>1 - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras nec urna aliquam, ornare eros vel, malesuada lorem. Nullam faucibus lorem at eros consectetur lobortis. Maecenas nec nibh congue, placerat sem id, rutrum velit. Phasellus porta enim at facilisis condimentum. Maecenas pharetra dolor vel elit tempor pellentesque sed sed eros. Aenean vitae mauris tincidunt, imperdiet orci semper, rhoncus ligula. Vivamus scelerisque.  </p>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade" id="Section2">
+                        <h3>Section-2</h3>
+                        <p>2 - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras nec urna aliquam, ornare eros vel, malesuada lorem. Nullam faucibus lorem at eros consectetur lobortis. Maecenas nec nibh congue, placerat sem id, rutrum velit. Phasellus porta enim at facilisis condimentum. Maecenas pharetra dolor vel elit tempor pellentesque sed sed eros. Aenean vitae mauris tincidunt, imperdiet orci semper, rhoncus ligula. Vivamus scelerisque. </p>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade" id="Section3">
+                        <h3>Section-3</h3>
+                        <p>3 - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras nec urna aliquam, ornare eros vel, malesuada lorem. Nullam faucibus lorem at eros consectetur lobortis. Maecenas nec nibh congue, placerat sem id, rutrum velit. Phasellus porta enim at facilisis condimentum. Maecenas pharetra dolor vel elit tempor pellentesque sed sed eros. Aenean vitae mauris tincidunt, imperdiet orci semper, rhoncus ligula. Vivamus scelerisque. </p>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade" id="Section4">
+                        <h3>Section-4</h3>
+                        <p>4 - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras nec urna aliquam, ornare eros vel, malesuada lorem. Nullam faucibus lorem at eros consectetur lobortis. Maecenas nec nibh congue, placerat sem id, rutrum velit. Phasellus porta enim at facilisis condimentum. Maecenas pharetra dolor vel elit tempor pellentesque sed sed eros. Aenean vitae mauris tincidunt, imperdiet orci semper, rhoncus ligula. Vivamus scelerisque. </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+ </div>
+</section>
+
+{%endblock body%}

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Category, Sub_Category,Brand,Product,Banner
+from .models import Category, Sub_Category,Brand,Product,Banner,Profile
 
 # Register your models here.
 
@@ -9,3 +9,4 @@ admin.site.register(Sub_Category)
 admin.site.register(Brand)
 admin.site.register(Product)
 admin.site.register(Banner)
+admin.site.register(Profile)
