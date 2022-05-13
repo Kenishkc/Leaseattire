@@ -78,10 +78,7 @@ def shop(request):
     brandId=request.GET.get('brand')
     if brandId:
          product =Product.objects.filter(brand=brandId)
-        
-    
-        
-        
+             
     context={
         'category':category,
         'brand':brands,
@@ -89,10 +86,18 @@ def shop(request):
         'banner':banner,
        }
     
-    
-    
     return render(request, 'shop.html',context)
-
+def blogs(request):
+    
+    category= Category.objects.all()
+    
+    
+    context={
+   'category':category,
+   
+   }
+    
+    return render(request, 'blog.html')
 def checkout(request):
     return render(request, 'checkout.html')
 
@@ -118,7 +123,9 @@ def register(request):
     if request.method=='POST':
         form = CreateUserForm(request.POST)
         if form.is_valid():
+             
             form.save() 
+            messages.success(request, "Registerd successfully!")
         
         
     context={
@@ -131,6 +138,9 @@ def logoutUser(request):
      messages.success(request, "Your logout, Get back Soon !")
      return redirect("/")
   
+
+
+
 def account(request):
     return render(request, 'account.html')
 
@@ -144,8 +154,7 @@ def cart(request):
     return render(request, 'cart.html')
 
 
-def blogs(request):
-    return render(request, 'blog.html')
+
 
 
 def singleblog(request):
