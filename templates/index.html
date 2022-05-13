@@ -153,7 +153,7 @@
               <div class="single-products">
                 <div class="productinfo text-center">
                   <img src="{{p.image}}" alt=""  style='height:300px;width:300px;'/>
-                  <h2>Rent at Rs.{{p.rentalprice}}</h2>
+                  <h2>Rent at Rs.{{p.price}}</h2>
                   <p>{{p.name}}</p>
                   <a href="{% url 'cart_add' p.id %}" class="btn btn-default add-to-cart"
                     ><i class="fa fa-shopping-cart"></i>Add to cart</a
@@ -161,7 +161,7 @@
                 </div>
                 <div class="product-overlay">
                   <div class="overlay-content">
-                    <h2>Actual Price Rs{{p.price}}</h2>
+                    <h2>Actual Price Rs{{p.rentalprice}}</h2>
                     <p>{{p.brand}}</p>
                     <a href="product-details/{{p.id}}" class="btn btn-default add-to-cart"
                       >View More</a

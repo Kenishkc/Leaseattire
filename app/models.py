@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
+import datetime
+
 
 # Create your models here.
 
@@ -62,3 +64,24 @@ class Profile(models.Model):
       def age(self):
         import datetime
         return int((datetime.date.today() - self.birthday).days / 365.25  )
+    
+    
+STATUS_CHOICES = [
+('PND', 'Pending'),
+('ACP', 'Accept'),
+('DLV', 'Deliver'),
+('CMP', 'Sucess'),
+]
+class Order(models.Model):
+    image = models. ImageField(upload_to='static/order/image')
+    product = models.CharField(max_length=1000,default='')
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    price = models.IntegerField()
+    quantity = models.CharField(max_length=10)
+    total = models.CharField(max_length=1000,default='')  
+    address = models.TextField()
+    phone = models.CharField(max_length=18)
+    start_date = models.DateField(help_text = "Start rental date")
+    end_date = models.DateField(help_text = "End rental date")
+    status = models.CharField(max_length=10, choices=STATUS_CHOICES)
+    note = models.TextField()     
