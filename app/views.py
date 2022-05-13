@@ -1,6 +1,6 @@
 
 from django.shortcuts import render ,redirect
-from app.models import  Category,Brand,Product,Banner,Sub_Category,Profile
+from app.models import  Category,Brand,Product,Banner,Sub_Category,Profile,Order
 from django.contrib.auth.forms import UserCreationForm
 from .forms import CreateUserForm
 from django.contrib.auth import authenticate, login, logout
@@ -9,6 +9,7 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from cart.cart import Cart
+from django.http import HttpResponse
 
 
 
@@ -143,6 +144,7 @@ def contact(request):
 def cart(request):
     return render(request, 'cart.html')
 
+ 
 
 def blogs(request):
     return render(request, 'blog.html')
@@ -238,3 +240,52 @@ def cart_clear(request):
 @login_required(login_url="/user-login")
 def cart_detail(request):
     return render(request, 'cart/cart_detail.html')
+
+
+def order(request):
+    user =User.objects.filter(id=request.user.id).first()
+    profile=Profile.objects.filter(user=user).first()
+    
+    if request.method=='POST':
+       startdate = request.POST.get('start_date')
+       address = request.POST.get('address')
+       phone = request.POST.get('phone')        
+       note = request.POST.get('note')        
+       cart = request.session.get('cart')
+    for i in cart:
+        # a = int(cart([i]['price']))
+        # b = int(cart([i]['quantity']))
+        # total = a * b
+        order = Order(
+            user=user,
+            product=cart[i]['name'],
+            price=cart[i]['price'],
+            quantity=cart[i]['quantity'],
+            image=cart[i]['image'],
+            total=cart[i]['price'],
+            address=address,
+            phone=phone,
+            start_date=startdate,
+            end_date=startdate,
+            status='PND',
+            note=note,
+            
+            
+        )
+        
+    order.save() 
+    request.session['cart']={}
+       
+     
+    messages.success(request, "Your Order has Sucessfully Placed!")
+    return redirect("/")
+
+def search(request):
+    
+    query= request.GET['query']
+    product= Product.objects.filter(name__icontains=query)
+    context={
+        "product":product
+    }
+    
+    return render(request, 'search.html',context)

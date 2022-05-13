@@ -13,6 +13,10 @@ urlpatterns = [
     path('store-profile', views.storeUserProfile,name='storeprofile'),
     path('wishlist', views.wishlist),
     path('cart', views.cart,name='cart'),
+    path('order',views.order,name='ordernow'),
+    path('search',views.search,name='search'),
+    
+    
     path('contact', views.contact),
     path('blogs', views.blogs),
     path('blog-single', views.singleblog),
