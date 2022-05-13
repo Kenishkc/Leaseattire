@@ -157,9 +157,12 @@ def singleblog(request):
 def profile(request,id):
     user =User.objects.filter(id=id).first()
     profile =Profile.objects.filter(user=user).first()
+    
+    order= Order.objects.filter(user=user)
     if profile :  
       context={
         'profile':profile,
+        'order':order,
         }
       return render(request, 'user/profile.html',context)
     else:
@@ -272,6 +275,7 @@ def order(request):
             
             
         )
+    
         
     order.save() 
     request.session['cart']={}
