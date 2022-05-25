@@ -134,6 +134,7 @@ def register(request):
     }
     return render(request, 'register.html',context)
 
+
 def logoutUser(request):
      logout(request)
      messages.success(request, "Your logout, Get back Soon !")

@@ -279,7 +279,7 @@
                     <li role="presentation" class="active"><a href="#Section1" aria-controls="home" role="tab" data-toggle="tab"><i class="fa fa-user"></i>Basic Info </a></li>
                     <li role="presentation"><a href="#Section2" aria-controls="profile" role="tab" data-toggle="tab"><i class="fa fa-envelope"></i>Message</a></li>
                     <li role="presentation"><a href="#Section3" aria-controls="messages" role="tab" data-toggle="tab"><i class="fa fa-shopping-cart"></i>Purchase</a></li>
-                    <li role="presentation"><a href="#Section4" aria-controls="messages" role="tab" data-toggle="tab"><i class="fa fa-comment"></i>Section 4</a></li>
+                    
                 </ul>
                 <!-- Tab panes -->
                 <div class="tab-content tabs">
@@ -291,10 +291,11 @@
                         <h3>Section-2</h3>
                         <p>2 - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras nec urna aliquam, ornare eros vel, malesuada lorem. Nullam faucibus lorem at eros consectetur lobortis. Maecenas nec nibh congue, placerat sem id, rutrum velit. Phasellus porta enim at facilisis condimentum. Maecenas pharetra dolor vel elit tempor pellentesque sed sed eros. Aenean vitae mauris tincidunt, imperdiet orci semper, rhoncus ligula. Vivamus scelerisque. </p>
                     </div>
-                    <div role="tabpanel" class="tab-pane fade" id="Section3">
+                    <div role="tabpanel" class="tab-pane fade" id="Section3" >
                         <h3>My Order</h3>
+                      
                         <section id="cart_items">
-                            <div class="container">
+                            <div class="col-10">
                 
                                 
                                 <div class="table-responsive cart_info">
@@ -306,7 +307,7 @@
                                         <td class="price">Price</td>
                                         <td class="quantity">Days</td>
                                         <td class="total">Total</td>
-                                        <td></td>
+                                        <td>Status</td>
                                     </tr>
                                     </thead>
 
@@ -321,7 +322,7 @@
                                         <p>{{value.brand}}</p>
                                         </td>
                                         <td class="cart_price">
-                                        <p>{{value.price}}</p>
+                                        <p class="cart_price">{{value.price}}</p>
                                         </td>
                                         <td class="cart_quantity">
                                         <div class="cart_quantity_button">
@@ -338,10 +339,8 @@
                                         <td class="cart_total">
                                         <p class="cart_total_price">{{ value.total}}</p>
                                         </td>
-                                        <td class="cart_delete"> <a class="cart_quantity_delete" 
-                                            ><i class="fa fa-times"></i
-                                        ></a>
-                                       
+                                        <td>
+                                            {{value.status}}
                                         </td>
                                     </tr>
                                     
@@ -359,11 +358,13 @@
                             </section>
                       
                     
+ 
+                       
+                       
+                       
+                        </div>
                     </div>
-                    <div role="tabpanel" class="tab-pane fade" id="Section4">
-                        <h3>Section-4</h3>
-                        <p>4 - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras nec urna aliquam, ornare eros vel, malesuada lorem. Nullam faucibus lorem at eros consectetur lobortis. Maecenas nec nibh congue, placerat sem id, rutrum velit. Phasellus porta enim at facilisis condimentum. Maecenas pharetra dolor vel elit tempor pellentesque sed sed eros. Aenean vitae mauris tincidunt, imperdiet orci semper, rhoncus ligula. Vivamus scelerisque. </p>
-                    </div>
+                   
                 </div>
             </div>
         </div>
