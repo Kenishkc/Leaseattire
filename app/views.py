@@ -273,7 +273,7 @@ def order(request):
             phone=phone,
             start_date=startdate,
             end_date=startdate,
-            status='PND',
+            status='Pending',
             note=note,
             
             
