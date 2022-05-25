@@ -120,12 +120,15 @@ def register(request):
         form = CreateUserForm(request.POST)
         if form.is_valid():
             form.save() 
-        
+            messages.success(request, "Sucessfully Register")
+        else:
+            messages.error(request, "Please Enter valid information!")
         
     context={
         'form':form,
     }
     return render(request, 'register.html',context)
+
 
 def logoutUser(request):
      logout(request)
