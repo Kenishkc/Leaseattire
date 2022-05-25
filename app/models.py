@@ -67,10 +67,10 @@ class Profile(models.Model):
     
     
 STATUS_CHOICES = [
-('PND', 'Pending'),
-('ACP', 'Accept'),
-('DLV', 'Deliver'),
-('CMP', 'Sucess'),
+('Pending', 'Pending'),
+('Accept', 'Accept'),
+('Deliver', 'Deliver'),
+('Sucess', 'Sucess'),
 ]
 class Order(models.Model):
     image = models. ImageField(upload_to='static/order/image')
