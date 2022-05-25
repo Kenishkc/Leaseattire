@@ -127,7 +127,8 @@ def register(request):
              
             form.save() 
             messages.success(request, "Registerd successfully!")
-        
+        else:
+           messages.error(request, "Please Enter valid username or password!") 
         
     context={
         'form':form,
